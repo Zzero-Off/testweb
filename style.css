@@ -51,7 +51,29 @@ body {
 		display: none;
 	}
   }
+
+  #my-popover {
+	display: flex;
+	background-color: #ccc8c8;
+	height: 80vh;
+	width: 240px;
+	flex-direction: column;
+	border: none;
+	align-items: flex-start;
+  }
 	
+  #my-popover a {
+	text-decoration: none;
+	color: rgba(208, 150, 205, 0.785);
+	padding: 10px;
+	font-weight: bold;
+  }
+
+  #my-popover::part(::content) {
+	transform: translateX(240px);
+	transition: transform 0.3s ease;
+  }
+
 .main-content {
 	padding-left: 60px;
 }
