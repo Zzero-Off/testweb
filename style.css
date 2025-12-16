@@ -20,6 +20,12 @@ body {
 	padding: 0px;
 }
 
+.header-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .website-logo {
 	display: flex;
 	align-items: flex-start;
@@ -108,16 +114,8 @@ header {
 }
 
 button {
-	background-color: rgb(245, 232, 245);
 	cursor: pointer;
-	border-radius: 230px;
-	border: rgba(208, 150, 205, 0.785);
-	padding: 4px;
-}
-
-button:hover {
-	transition: 0.1s;
-	transform: scale(1.2);
+	border: none;
 }
 
 @media (max-width: 1000px) {
@@ -245,7 +243,12 @@ footer .footer-icons img:hover {
 	.header-nav {
 		background-color: #2b2a2a;
 	}
+
+	.style-popover {
+		background-color: #575555;
+	}
 	button {
+		color: white;
 		background-color: #2b2a2a;
 	}
 }
@@ -257,6 +260,12 @@ footer .footer-icons img:hover {
 	}
 
 	button {
-		background-color: rgba(216, 200, 215, 0.785);
+		background-color: rgb(235, 235, 235);
+	}
+	.style-popover {
+		background-color: #d5c3bf;
+	}
+	.style-popover a {
+		color: black;
 	}
 }
