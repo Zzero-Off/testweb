@@ -24,12 +24,18 @@ body {
 }
 
 .website-logo {
-	display: inline-block;
+	display: flex;
+	align-items: flex-start;
 }
 
 .website-logo img {
-	align-items: flex-start;
 	cursor: pointer;
+}
+
+@media (max-width: 640px) {
+	.website-logo {
+		justify-content: center;
+	}
 }
 
 .main-content {
