@@ -9,12 +9,26 @@
   </head>
   <body>
     <header>
-			<div class="website-logo">
-				<a href="/index.html">
-				<img src="/pics/website-logo.png" alt="Website logo" width="100px" height="90px">
-				</a>
-			</div>
+      <div class="header-bar">
+				<div class="website-logo">
+					<a href="/index.html">
+					<img src="/pics/website-logo.png" alt="Website logo" width="100px" height="90px">
+					</a>
+				</div>
 
+				<div class="hamburger-menu">
+					<button popovertarget="my-popover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></button>
+
+					<div popover id="my-popover">
+						<div class="style-popover">
+						<a href="/honda.html">Honda</a>
+						<a href="/suzuki.html">Suzuki</a>
+						<a href="/kawasaki.html">Kawasaki</a>
+						<a href="/yamaha.html">Yamaha</a>
+						</div>
+					</div>
+				</div>
+			</div>
       <h1>Svět japonských motorek: výkon na dosah</h1>
       <p>Precizní technika na dvou kolech</p>
       <br />
@@ -24,26 +38,25 @@
           <a href="/suzuki.html">Suzuki</a>
           <a href="/kawasaki.html">Kawasaki</a>
           <a href="/yamaha.html">Yamaha</a>
-          <div class="theme-toggle">
-            <button type="button">🌞 🌙</button>
-          </div>
+          <!-- <div class="theme-toggle"><button type="button">🌞 🌙</button>
+			-->
         </nav>
       </div>
     </header>
-		<main>
-    <div class="bike-card">
-      <img src="/pics/honda.jpg" alt="Honda CBR 65O" width="600px" height="auto">
-      <div class="list-items">
-        <ul>
-          <li>CBR 650</li>
-          <li>řadový čtyřválec DOHC</li>
-          <li>70 kW při 12 000 ot./min, 93,9 koní</li>
-          <li>točivý moment 63 Nm při 9 500 ot./min</li>
-          <li>6 stupňová převodovka</li>
-        </ul>
+    <main>
+      <div class="bike-card">
+        <img src="/pics/honda.jpg" alt="Honda CBR 65O" width="600px" height="auto">
+        <div class="list-items">
+          <ul>
+            <li>CBR 650</li>
+            <li>řadový čtyřválec DOHC</li>
+            <li>70 kW při 12 000 ot./min, 93,9 koní</li>
+            <li>točivý moment 63 Nm při 9 500 ot./min</li>
+            <li>6 stupňová převodovka</li>
+          </ul>
+        </div>
       </div>
-    </div>
-		</main>
+    </main>
     <footer class="site-footer">
       <div class="footer-icons">
         <img src="/pics/icons/youtube.png">
