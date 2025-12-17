@@ -55,8 +55,8 @@ body {
 	}
 }
 #my-popover {
+	background-color: transparent;
 	border: none;
-	top: 110%;
 }
 
 .style-popover {
