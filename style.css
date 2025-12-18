@@ -214,21 +214,25 @@ img {
 .gallery-grid {
 	display: grid;
 	justify-content: center;
+	cursor: pointer;
+}
+
+.gallery-label img:hover {
+	transform: scale(2.0);
+	transition: 0.7s ease;
 }
 
 .brand-row {
 	display: grid;
 	grid-template-columns: repeat(5, 200px);
 	gap: 1rem;
-	row-gap: 1rem;
 }
 
 .brand-row img {
 	width: 100%;
-	height: 200px;
+	height: 180px;
 	object-fit: cover;
 	display: block;
-	row-gap: 1rem;
 }
 
 .gallery-label {
@@ -237,10 +241,9 @@ img {
 }
 
 .img-caption {
-  padding: 0.4rem;
-  background: transparent;
-  color: white;
-  text-align: center;
+	padding: 0.4rem;
+	color: white;
+	text-align: center;
 }
 
 .site-footer {
@@ -286,8 +289,8 @@ footer .footer-icons img:hover {
 		background-color: #2b2a2a;
 	}
 	.link {
-	color: white;
-}
+		color: white;
+	}
 }
 
 @media (prefers-color-scheme: light) {
