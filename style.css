@@ -54,6 +54,7 @@ body {
 		display: none;
 	}
 }
+
 #my-popover {
 	background-color: transparent;
 	border: none;
@@ -210,6 +211,38 @@ img {
 	text-decoration: none;
 }
 
+.gallery-grid {
+	display: grid;
+	justify-content: center;
+}
+
+.brand-row {
+	display: grid;
+	grid-template-columns: repeat(5, 200px);
+	gap: 1rem;
+	row-gap: 1rem;
+}
+
+.brand-row img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	display: block;
+	row-gap: 1rem;
+}
+
+.gallery-label {
+	position: relative;
+	text-align: center;
+}
+
+.img-caption {
+  padding: 0.4rem;
+  background: transparent;
+  color: white;
+  text-align: center;
+}
+
 .site-footer {
 	margin-top: auto;
 }
@@ -252,6 +285,9 @@ footer .footer-icons img:hover {
 		color: white;
 		background-color: #2b2a2a;
 	}
+	.link {
+	color: white;
+}
 }
 
 @media (prefers-color-scheme: light) {
