@@ -214,7 +214,6 @@ img {
 .gallery-grid {
 	display: grid;
 	justify-content: center;
-	cursor: pointer;
 	gap: 1rem;
 }
 
@@ -222,6 +221,7 @@ img {
 	transform: scale(1.5);
 	transition: 0.7s ease;
 	z-index: 1;
+	cursor: pointer;
 }
 
 .brand-row {
