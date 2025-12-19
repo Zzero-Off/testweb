@@ -215,16 +215,18 @@ img {
 	display: grid;
 	justify-content: center;
 	cursor: pointer;
+	gap: 1rem;
 }
 
-.gallery-label img:hover {
-	transform: scale(2.0);
+.gallery-label:hover {
+	transform: scale(1.5);
 	transition: 0.7s ease;
+	z-index: 1;
 }
 
 .brand-row {
 	display: grid;
-	grid-template-columns: repeat(5, 200px);
+	grid-template-columns: repeat(5, 220px);
 	gap: 1rem;
 }
 
@@ -238,12 +240,37 @@ img {
 .gallery-label {
 	position: relative;
 	text-align: center;
+	overflow: hidden;
+	transition: transform 0.5s ease;
 }
 
 .img-caption {
 	padding: 0.4rem;
-	color: white;
+	color: rgb(255, 255, 255);
 	text-align: center;
+	background: transparent;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+@media (max-width: 1200px) {
+	.brand-row {
+		grid-template-columns: repeat(5, 1fr);
+	}
+}
+
+@media (max-width: 800px) {
+	.brand-row {
+		grid-template-columns: repeat(2, 2fr);
+	}
+}
+
+@media (max-width: 500px) {
+	.brand-row {
+		grid-template-columns: 1fr;
+	}
 }
 
 .site-footer {
