@@ -35,7 +35,7 @@ body {
 	cursor: pointer;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 640px) {
 	.website-logo {
 		justify-content: center;
 	}
@@ -54,6 +54,7 @@ body {
 		display: none;
 	}
 }
+
 #my-popover {
 	background-color: transparent;
 	border: none;
@@ -79,7 +80,7 @@ body {
 }
 
 .main-content {
-	padding-left: 60px;
+	padding: 60px;
 }
 
 header {
@@ -193,21 +194,85 @@ img {
 	padding-left: 60px;
 }
 
-@media (max-width: 1000px) {
-	.bike-card {
-		flex-direction: column;
-	}
-}
-
-@media (max-width: 700px) {
+@media (min-width: 700px) {
 	.bike-card img {
 		max-width: 450px;
 		max-height: auto;
 	}
 }
 
+@media (max-width: 1000px) {
+	.bike-card {
+		flex-direction: column;
+	}
+}
+
 .link {
 	text-decoration: none;
+}
+
+.gallery-grid {
+	display: grid;
+	justify-items: center;
+	gap: 1rem;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.gallery-label:hover {
+	transform: scale(1.2);
+	transition: 0.7s ease;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.brand-row {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 1rem;
+}
+
+.brand-row img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.gallery-label {
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+	aspect-ratio: 4 / 3;
+}
+
+.img-caption {
+	padding: 0.4rem;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	background: transparent;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+@media (min-width: 300px) {
+	.brand-row {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media (min-width: 800px) {
+	.brand-row {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1200px) {
+	.brand-row {
+		grid-template-columns: repeat(5, 1fr);
+	}
 }
 
 .site-footer {
@@ -251,6 +316,9 @@ footer .footer-icons img:hover {
 	button {
 		color: white;
 		background-color: #2b2a2a;
+	}
+	.link {
+		color: white;
 	}
 }
 
