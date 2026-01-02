@@ -301,6 +301,27 @@ img {
 		grid-template-columns: repeat(5, 1fr);
 	}
 }
+.faq-section {
+	max-width: 800px;
+}
+
+details {
+  padding: 0.5em 0.5em 0;
+}
+
+summary {
+  font-weight: bold;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+}
+
+details[open] {
+  padding: 0.5em;
+}
+
+details[open] summary {
+  margin-bottom: 0.5em;
+}
 
 .site-footer {
 	margin-top: auto;
