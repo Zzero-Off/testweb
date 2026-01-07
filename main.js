@@ -1,16 +1,14 @@
-const toggle = document.getElementById("mode-toggle");
+document.addEventListener("DOMContentLoaded", () => {
+	const likeButtons = document.querySelectorAll(".like-button");
 
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark-mode");
-  toggle.checked = true;
-}
+	for (const btn of likeButtons) {
+		btn.addEventListener("click", (e) => {
+			e.preventDefault();
 
-toggle.addEventListener("change", () => {
-  if (toggle.checked) {
-    document.body.classList.add("dark-mode");
-    localStorage.setItem("theme", "dark");
-  } else {
-    document.body.classList.remove("dark-mode");
-    localStorage.setItem("theme", "light");
-  }
+			const countSpan = btn.querySelector(".like-count");
+			let count = parseInt(countSpan.innerText, 10);
+			count +=1;
+			countSpan.innerText = count;
+		});
+	}
 });
