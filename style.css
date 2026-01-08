@@ -312,7 +312,11 @@ img {
 	text-decoration: none;
 	color: white;
 	border-radius: 3px;
-	gap: 4px;
+	gap: 2px;
+}
+
+.like-icon {
+	filter: invert(1);
 }
 
 .like-button:hover {
@@ -320,8 +324,8 @@ img {
 }
 
 .like-button img {
-	width: 20px;
-	height: 20px;
+	width: 24px;
+	height: 24px;
 }
 
 .faq-section {

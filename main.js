@@ -1,13 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const likeButtons = document.querySelectorAll(".like-button");
+	const likeButtons = document.querySelectorAll(".js-like-button");
 
 	for (const btn of likeButtons) {
 		btn.addEventListener("click", (e) => {
 			e.preventDefault();
 
-			const countSpan = btn.querySelector(".like-count");
+			const countSpan = btn.querySelector(".js-like-count");
 			let count = parseInt(countSpan.innerText, 10);
-			count +=1;
+
+			if (isNaN(count)) {
+				count = 0;
+			}
+			
+			count ++;
 			countSpan.innerText = count;
 		});
 	}
