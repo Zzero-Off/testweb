@@ -281,7 +281,8 @@ img {
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	width: 100%;
+	width: calc(100% - 40px);
+	text-overflow: ellipsis;
 }
 
 @media (min-width: 300px) {
@@ -300,6 +301,31 @@ img {
 	.brand-row {
 		grid-template-columns: repeat(5, 1fr);
 	}
+}
+
+.like-button {
+	display: flex;
+	position: absolute;
+	align-items: center;
+	bottom: 4px;
+	right: 4px;
+	text-decoration: none;
+	color: white;
+	border-radius: 3px;
+	gap: 2px;
+}
+
+.like-icon {
+	filter: invert(1);
+}
+
+.like-button:hover {
+	background-color: rgb(46, 220, 46);
+}
+
+.like-button img {
+	width: 24px;
+	height: 24px;
 }
 
 .faq-section {
