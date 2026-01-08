@@ -1,16 +1,10 @@
-const toggle = document.getElementById("mode-toggle");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark-mode");
-  toggle.checked = true;
-}
+    const galleryImages = document.querySelectorAll(".js-gallery-image");
 
-toggle.addEventListener("change", () => {
-  if (toggle.checked) {
-    document.body.classList.add("dark-mode");
-    localStorage.setItem("theme", "dark");
-  } else {
-    document.body.classList.remove("dark-mode");
-    localStorage.setItem("theme", "light");
-  }
+    for (const img of galleryImages) {
+        img.addEventListener("click", () => {
+            alert("^_^");
+        });
+    }
 });
