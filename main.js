@@ -25,4 +25,22 @@ document.addEventListener("DOMContentLoaded", () => {
 			countSpan.innerText = count;
 		});
 	}
+
+		const totalCountElement = document.querySelector(".js-total-count");
+		
+		let cookiesArray = document.cookie.split(";");
+		let visitsCookie = cookiesArray.find(cookie => cookie.startsWith("visits"));
+		let numberOfVisits;
+				
+			if (visitsCookie) {
+				numberOfVisits = Number(visitsCookie.split("=")[1]) + 1;
+			} else {
+				numberOfVisits = 1;
+			}
+
+			document.cookie = "visit" + numberOfVisits + "; path=/";
+
+			totalCountElement.textContent = numberOfVisits;
+
+	
 });

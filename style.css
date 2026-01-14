@@ -368,6 +368,26 @@ details[open] .arrow-icon {
 	transform: rotate(180deg);
 }
 
+.pages-visit-counter {
+	display: flex;
+	justify-content: center;
+}
+
+table {
+	color: rgb(7, 7, 7);
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 140px;
+}
+
+thead {
+	background-color:  #23a8d1;
+}
+
+tbody {
+	background-color: rgb(235, 235, 235);
+}
+
 .site-footer {
 	margin-top: auto;
 }
