@@ -111,84 +111,85 @@ brands.forEach((brand) => {
 	const row = document.createElement("div");
 	row.className = "brand-row";
 
-	bikesGallery.forEach((bike) => {
-		if (bike.brand === brand) {
-			const label = document.createElement("div");
-			label.className = "gallery-label";
+	for (let i = 0; i < bikesGallery.length; i++) {
+		const bike = bikesGallery[i];
 
-			const img = document.createElement("img");
-			img.src = bike.imgUrl;
-			img.alt = `${bike.brand} ${bike.model}`;
+		if (bike.brand !== brand) continue;
 
-			const caption = document.createElement("span");
-			caption.className = "img-caption";
-			caption.textContent = `${bike.brand} ${bike.model}`;
+		const label = document.createElement("div");
+		label.className = "gallery-label";
 
-			const likeButton = document.createElement("div");
-			likeButton.className = "like-button";
+		const img = document.createElement("img");
+		img.src = bike.imgUrl;
+		img.alt = `${bike.brand} ${bike.model}`;
 
-			const likeIcon = document.createElement("img");
-			likeIcon.src = "/pics/thumbs-up.svg";
-			likeIcon.alt = "Like";
+		const caption = document.createElement("span");
+		caption.className = "img-caption";
+		caption.textContent = `${bike.brand} ${bike.model}`;
 
-			const likeCount = document.createElement("span");
-			likeCount.textContent = "0";
+		const likeButton = document.createElement("div");
+		likeButton.className = "like-button";
 
-			let likes = 0;
-			likeButton.addEventListener("click", () => {
-				likes++;
-				likeCount.textContent = likes;
-			});
+		const likeIcon = document.createElement("img");
+		likeIcon.src = "/pics/thumbs-up.svg";
+		likeIcon.alt = "Like";
 
-			const modal = document.querySelector(".modal");
-			const modalImg = document.querySelector(".modal-img");
-			const modalCaption = document.querySelector(".modal-caption");
-			const modalClose = document.querySelector(".modal-close");
+		const likeCount = document.createElement("span");
+		likeCount.textContent = "0";
 
-			img.addEventListener("click", () => {
-				modal.style.display = "flex";
-				modalImg.src = img.src;
-				modalCaption.textContent = img.alt;
-			});
+		let likes = 0;
+		likeButton.addEventListener("click", () => {
+			likes++;
+			likeCount.textContent = likes;
+		});
 
-			img.addEventListener("click", () => {
-				document.body.classList.add("modal-open");
-				modal.style.display = "flex";
-				modalImg.src = img.src;
-				modalCaption.textContent = img.alt;
-			});
+		const modal = document.querySelector(".modal");
+		const modalImg = document.querySelector(".modal-img");
+		const modalCaption = document.querySelector(".modal-caption");
+		const modalClose = document.querySelector(".modal-close");
 
-			modalClose.addEventListener("click", () => {
+		img.addEventListener("click", () => {
+			modal.style.display = "flex";
+			modalImg.src = img.src;
+			modalCaption.textContent = img.alt;
+		});
+
+		img.addEventListener("click", () => {
+			document.body.classList.add("modal-open");
+			modal.style.display = "flex";
+			modalImg.src = img.src;
+			modalCaption.textContent = img.alt;
+		});
+
+		modalClose.addEventListener("click", () => {
+			modal.style.display = "none";
+			document.body.classList.remove("modal-open");
+		});
+
+		modal.addEventListener("click", (e) => {
+			if (e.target === modal) {
 				modal.style.display = "none";
 				document.body.classList.remove("modal-open");
-			});
+			}
+		});
 
-			modal.addEventListener("click", (e) => {
-				if (e.target === modal) {
-					modal.style.display = "none";
-					document.body.classList.remove("modal-open");
-				}
-			});
+		modalClose.addEventListener("click", () => {
+			modal.style.display = "none";
+		});
 
-			modalClose.addEventListener("click", () => {
+		modal.addEventListener("click", (e) => {
+			if (e.target === modal) {
 				modal.style.display = "none";
-			});
+			}
+		});
 
-			modal.addEventListener("click", (e) => {
-				if (e.target === modal) {
-					modal.style.display = "none";
-				}
-			});
-
-			label.append(img);
-			label.append(caption);
-			row.append(label);
-			likeButton.append(likeIcon);
-			likeButton.append(likeCount);
-			label.append(likeButton);
-		}
-	});
-
+		label.append(img);
+		label.append(caption);
+		row.append(label);
+		likeButton.append(likeIcon);
+		likeButton.append(likeCount);
+		label.append(likeButton);
+	}
 	container.append(row);
 });
 
