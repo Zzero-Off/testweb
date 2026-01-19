@@ -312,11 +312,7 @@ img {
 	text-decoration: none;
 	color: white;
 	border-radius: 3px;
-	gap: 2px;
-}
-
-.like-icon {
-	filter: invert(1);
+	gap: 4px;
 }
 
 .like-button:hover {
@@ -324,8 +320,61 @@ img {
 }
 
 .like-button img {
-	width: 24px;
-	height: 24px;
+	width: 20px;
+	height: 20px;
+	filter: invert(1);
+}
+
+#modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+	inset: 0;
+}
+
+.modal-img {
+	display: block;
+	max-width: 90vw;
+	max-height: 80vh;
+	object-fit: contain;
+}
+
+.modal-content {
+	position: relative;
+	display: inline-block;
+	max-width: 90%;
+	max-height: 80%;
+}
+
+.modal-caption {
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px;
+}
+
+.modal-open .gallery-grid {
+	pointer-events: none;
+}
+
+.close {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	color: rgb(255, 255, 255);
+	font-size: 2rem;
+	cursor: pointer;
 }
 
 .faq-section {
