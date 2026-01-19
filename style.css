@@ -325,7 +325,7 @@ img {
 	filter: invert(1);
 }
 
-#modal {
+.modal {
 	display: none;
 	position: fixed;
 	top: 0;
@@ -368,7 +368,7 @@ img {
 	pointer-events: none;
 }
 
-.close {
+.modal-close {
 	position: absolute;
 	top: 20px;
 	right: 30px;
@@ -390,18 +390,18 @@ details {
 }
 
 summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: bold;
-  margin: -0.5rem -0.5rem 0;
-  padding: 1rem;
-  cursor: pointer;
-  list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: bold;
+	margin: -0.5rem -0.5rem 0;
+	padding: 1rem;
+	cursor: pointer;
+	list-style: none;
 }
 
 details[open] summary {
-  margin-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 details[open] p {
@@ -430,7 +430,7 @@ table {
 }
 
 thead {
-	background-color:  #23a8d1;
+	background-color: #23a8d1;
 }
 
 tbody {
@@ -504,10 +504,10 @@ footer .footer-icons img:hover {
 	}
 
 	details {
-		border-bottom: solid 1px   #bd9827;
+		border-bottom: solid 1px #bd9827;
 	}
 
 	.arrow-icon {
-		color:   #bd9827;
+		color: #bd9827;
 	}
 }
