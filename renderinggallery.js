@@ -1,111 +1,106 @@
-fetch("/gallery.json")
-	.then((response) => {
-		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
-		}
-		return response.json();
-	})
-	.then((bikesGallery) => {
-		renderGallery(bikesGallery);
-	})
-	.catch((error) => {
-		console.error("Chyba při načítání galerie:", error);
-	});
+class Gallery {
+	constructor() {
+		this.container = document.querySelector(".gallery-grid");
+		this.brands = ["Honda", "Suzuki", "Kawasaki", "Yamaha"];
 
-function renderGallery(bikesGallery) {
-	const container = document.querySelector(".gallery-grid");
-	const brands = ["Honda", "Suzuki", "Kawasaki", "Yamaha"];
+		this.modal = document.querySelector(".modal");
+		this.modalImg = document.querySelector(".modal-img");
+		this.modalCaption = document.querySelector(".modal-caption");
+		this.modalClose = document.querySelector(".modal-close");
 
-	brands.forEach((brand) => {
-		const row = document.createElement("div");
-		row.className = "brand-row";
+		this.loadData();
+	}
 
-		for (let i = 0; i < bikesGallery.length; i++) {
-			const bike = bikesGallery[i];
-
-			if (bike.brand !== brand) continue;
-
-			const label = document.createElement("div");
-			label.className = "gallery-label";
-
-			const img = document.createElement("img");
-			img.src = bike.imgUrl;
-			img.alt = `${bike.brand} ${bike.model}`;
-
-			const caption = document.createElement("span");
-			caption.className = "img-caption";
-			caption.textContent = `${bike.brand} ${bike.model}`;
-
-			const likeButton = document.createElement("div");
-			likeButton.className = "like-button";
-
-			const likeIcon = document.createElement("img");
-			likeIcon.src = "/pics/thumbs-up.svg";
-			likeIcon.alt = "Like";
-
-			const likeCount = document.createElement("span");
-			likeCount.textContent = "0";
-
-			let likes = 0;
-			likeButton.addEventListener("click", () => {
-				likes++;
-				likeCount.textContent = likes;
-			});
-
-			const modal = document.querySelector(".modal");
-			const modalImg = document.querySelector(".modal-img");
-			const modalCaption = document.querySelector(".modal-caption");
-			const modalClose = document.querySelector(".modal-close");
-
-			img.addEventListener("click", () => {
-				modal.style.display = "flex";
-				modalImg.src = img.src;
-				modalCaption.textContent = img.alt;
-			});
-
-			img.addEventListener("click", () => {
-				document.body.classList.add("modal-open");
-				modal.style.display = "flex";
-				modalImg.src = img.src;
-				modalCaption.textContent = img.alt;
-			});
-
-			modalClose.addEventListener("click", () => {
-				modal.style.display = "none";
-				document.body.classList.remove("modal-open");
-			});
-
-			modal.addEventListener("click", (e) => {
-				if (e.target === modal) {
-					modal.style.display = "none";
-					document.body.classList.remove("modal-open");
+	loadData() {
+		fetch("/gallery.json")
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
 				}
+				return response.json();
+			})
+			.then((bikesGallery) => {
+				this.renderGallery(bikesGallery);
+			})
+			.catch((error) => {
+				console.error("Chyba při načítání galerie:", error);
+			});
+	}
+
+	renderGallery(bikesGallery) {
+		this.brands.forEach((brand) => {
+			const row = document.createElement("div");
+			row.className = "brand-row";
+
+			bikesGallery.forEach((bike) => {
+				if (bike.brand !== brand) return;
+
+				const label = document.createElement("div");
+				label.className = "gallery-label";
+
+				const img = document.createElement("img");
+				img.src = bike.imgUrl;
+				img.alt = `${bike.brand} ${bike.model}`;
+
+				const caption = document.createElement("span");
+				caption.className = "img-caption";
+				caption.textContent = `${bike.brand} ${bike.model}`;
+
+				const likeButton = document.createElement("div");
+				likeButton.className = "like-button";
+
+				const likeIcon = document.createElement("img");
+				likeIcon.src = "/pics/thumbs-up.svg";
+
+				const likeCount = document.createElement("span");
+				likeCount.textContent = "0";
+
+				let likes = 0;
+				likeButton.addEventListener("click", () => {
+					likes++;
+					likeCount.textContent = likes;
+				});
+
+				img.addEventListener("click", () => {
+					this.openModal(img.src, img.alt);
+				});
+
+				likeButton.append(likeIcon, likeCount);
+				label.append(img, caption, likeButton);
+				row.append(label);
 			});
 
-			modalClose.addEventListener("click", () => {
-				modal.style.display = "none";
-			});
+			this.container.append(row);
+		});
 
-			modal.addEventListener("click", (e) => {
-				if (e.target === modal) {
-					modal.style.display = "none";
-				}
-			});
+		this.initModal();
+	}
 
-			label.append(img);
-			label.append(caption);
-			row.append(label);
-			likeButton.append(likeIcon);
-			likeButton.append(likeCount);
-			label.append(likeButton);
-		}
-		container.append(row);
-	});
+	initModal() {
+		this.modalClose.addEventListener("click", () => {
+			this.closeModal();
+		});
 
-	bikesGallery.forEach((bike, index) => {
-		console.log("Index:", index);
-		console.log("Bike object:", bike);
-		console.log("Brand:", bike.brand);
-		console.log("Image URL:", bike.imgUrl);
-	});
+		this.modal.addEventListener("click", (e) => {
+			if (e.target === this.modal) {
+				this.closeModal();
+			}
+		});
+	}
+
+	openModal(src, caption) {
+		this.modal.style.display = "flex";
+		this.modalImg.src = src;
+		this.modalCaption.textContent = caption;
+		document.body.classList.add("modal-open");
+	}
+
+	closeModal() {
+		this.modal.style.display = "none";
+		document.body.classList.remove("modal-open");
+	}
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+	new Gallery();
+});
