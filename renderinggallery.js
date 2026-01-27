@@ -1,3 +1,114 @@
+class BikeCard extends HTMLElement {
+	constructor() {
+		super();
+		this.attachShadow({ mode: `open` });
+		this.likes = 0;
+	}
+
+	connectedCallback() {
+		const brand = this.getAttribute(`brand`) ?? ``;
+		const model = this.getAttribute(`model`) ?? ``;
+		const img = this.getAttribute(`img`) ?? ``;
+
+		this.shadowRoot.innerHTML = `
+			<style>
+				.gallery-label {
+					position: relative;
+					text-align: center;
+					overflow: hidden;
+					aspect-ratio: 4 / 3;
+				}
+				.gallery-label:hover {
+					transform: scale(1.2);
+					transition: 0.7s ease;
+					z-index: 1;
+					cursor: pointer;
+				}	
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					display: block;
+					border-radius: 10px;
+				}	
+				.img-caption {
+					padding: 0.4rem;
+					color: rgb(255, 255, 255);
+					text-align: center;
+					background: transparent;
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					width: calc(100% - 40px);
+					text-overflow: ellipsis;
+				}
+				.like-button {
+					display: flex;
+					position: absolute;
+					align-items: center;
+					bottom: 4px;
+					right: 4px;
+					text-decoration: none;
+					color: white;
+					border-radius: 3px;
+					gap: 4px;
+				}
+				.like-button:hover {
+					background-color: rgb(46, 220, 46);
+				}
+				.like-button img {
+					width: 20px;
+					height: 20px;
+					filter: invert(1);
+				}
+			</style>
+			
+			<div class="gallery-label">
+				<img src="${img}" alt="${brand} ${model}">
+				<span class="img-caption">${brand} ${model}</span>
+				<div class="like-button" id="like-btn">
+					<img src="/pics/thumbs-up.svg" alt="Like">
+					<span id="like-count">0</span>
+				</div>
+			</div>
+		`;
+
+		const btn = this.shadowRoot.querySelector(".like-button");
+		const count = this.shadowRoot.querySelector("#like-count");
+
+		btn.addEventListener("click", (e) => {
+			e.stopPropagation();
+			this.likes++;
+			count.textContent = this.likes;
+		});
+
+		const imageElement = this.shadowRoot.querySelector(`img`);
+
+		imageElement.addEventListener(`click`, () => {
+			const modal = document.querySelector(".modal");
+			const modalImg = document.querySelector(".modal-img");
+			const modalCaption = document.querySelector(".modal-caption");
+			const modalClose = document.querySelector(".modal-close");
+
+			modalClose.addEventListener("click", () => {
+				modal.style.display = "none";
+
+				document.body.classList.remove("modal-open");
+			});
+
+			if (modal && modalImg) {
+				modalImg.src = img;
+				modalCaption.textContent = `${brand} ${model}`;
+
+				modal.style.display = "flex";
+				document.body.classList.add("modal-open");
+			}
+		});
+	}
+}
+
+customElements.define("bike-card", BikeCard);
+
 fetch("/gallery.json")
 	.then((response) => {
 		if (!response.ok) {
@@ -20,92 +131,20 @@ function renderGallery(bikesGallery) {
 		const row = document.createElement("div");
 		row.className = "brand-row";
 
-		for (let i = 0; i < bikesGallery.length; i++) {
-			const bike = bikesGallery[i];
+		bikesGallery.forEach((bike) => {
+			if (bike.brand === brand) {
+				const card = document.createElement("bike-card");
 
-			if (bike.brand !== brand) continue;
-
-			const label = document.createElement("div");
-			label.className = "gallery-label";
-
-			const img = document.createElement("img");
-			img.src = bike.imgUrl;
-			img.alt = `${bike.brand} ${bike.model}`;
-
-			const caption = document.createElement("span");
-			caption.className = "img-caption";
-			caption.textContent = `${bike.brand} ${bike.model}`;
-
-			const likeButton = document.createElement("div");
-			likeButton.className = "like-button";
-
-			const likeIcon = document.createElement("img");
-			likeIcon.src = "/pics/thumbs-up.svg";
-			likeIcon.alt = "Like";
-
-			const likeCount = document.createElement("span");
-			likeCount.textContent = "0";
-
-			let likes = 0;
-			likeButton.addEventListener("click", () => {
-				likes++;
-				likeCount.textContent = likes;
-			});
-
-			const modal = document.querySelector(".modal");
-			const modalImg = document.querySelector(".modal-img");
-			const modalCaption = document.querySelector(".modal-caption");
-			const modalClose = document.querySelector(".modal-close");
-
-			img.addEventListener("click", () => {
-				modal.style.display = "flex";
-				modalImg.src = img.src;
-				modalCaption.textContent = img.alt;
-			});
-
-			img.addEventListener("click", () => {
-				document.body.classList.add("modal-open");
-				modal.style.display = "flex";
-				modalImg.src = img.src;
-				modalCaption.textContent = img.alt;
-			});
-
-			modalClose.addEventListener("click", () => {
-				modal.style.display = "none";
-				document.body.classList.remove("modal-open");
-			});
-
-			modal.addEventListener("click", (e) => {
-				if (e.target === modal) {
-					modal.style.display = "none";
-					document.body.classList.remove("modal-open");
-				}
-			});
-
-			modalClose.addEventListener("click", () => {
-				modal.style.display = "none";
-			});
-
-			modal.addEventListener("click", (e) => {
-				if (e.target === modal) {
-					modal.style.display = "none";
-				}
-			});
-
-			label.append(img);
-			label.append(caption);
-			row.append(label);
-			likeButton.append(likeIcon);
-			likeButton.append(likeCount);
-			label.append(likeButton);
-		}
+				card.setAttribute("brand", bike.brand);
+				card.setAttribute("model", bike.model);
+				card.setAttribute("img", bike.imgUrl);
+				row.append(card);
+			}
+		});
 		container.append(row);
 	});
-
-	bikesGallery.forEach((bike, index) => {
-		console.log("Index:", index);
-		console.log("Bike object:", bike);
-		console.log("Brand:", bike.brand);
-		console.log("Image URL:", bike.imgUrl);
-	});
 }
+
+document.querySelector(".modal-close").addEventListener("click", () => {
+	document.querySelector(".modal").style.display = "none";
+});
