@@ -6,9 +6,9 @@ class BikeCard extends HTMLElement {
 	}
 
 	connectedCallback() {
-		const brand = this.getAttribute(`brand`) || ``;
-		const model = this.getAttribute(`model`) || ``;
-		const img = this.getAttribute(`img`) || ``;
+		const brand = this.getAttribute(`brand`) ?? ``;
+		const model = this.getAttribute(`model`) ?? ``;
+		const img = this.getAttribute(`img`) ?? ``;
 
 		this.shadowRoot.innerHTML = `
 			<style>
