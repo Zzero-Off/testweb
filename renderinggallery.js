@@ -1,3 +1,14 @@
+/**
+ * @typedef {Object} Bike
+ * @property {string} brand - motorcycle brand
+ * @property {string} model - motorcycle model
+ * @property {string} imgUrl - path to image
+ */
+
+/**
+ * Web component representing a single motorcycle card.
+ * @extends {HTMLElement}
+ */
 class BikeCard extends HTMLElement {
 	constructor() {
 		super();
@@ -6,10 +17,12 @@ class BikeCard extends HTMLElement {
 	}
 
 	connectedCallback() {
+		// Get attribute passed from the parent element
 		const brand = this.getAttribute(`brand`) ?? ``;
 		const model = this.getAttribute(`model`) ?? ``;
 		const img = this.getAttribute(`img`) ?? ``;
 
+		// InnerHTML setup for Shadow DOM
 		this.shadowRoot.innerHTML = `
 			<style>
 				.gallery-label {
@@ -73,9 +86,12 @@ class BikeCard extends HTMLElement {
 			</div>
 		`;
 
+		/** @type {HTMLElement} */
 		const btn = this.shadowRoot.querySelector(".like-button");
 		const count = this.shadowRoot.querySelector("#like-count");
-
+		
+		// Handle like button clicks without bubbling up
+		/** @param {MouseEvent} e */
 		btn.addEventListener("click", (e) => {
 			e.stopPropagation();
 			this.likes++;
@@ -122,7 +138,11 @@ fetch("/gallery.json")
 	.catch((error) => {
 		console.error("Chyba při načítání galerie:", error);
 	});
-
+/**
+ * Renders the gallery of bikes grouped by brand.
+ * @param {Bike[]} bikesGallery - array of motorcycle objects from JSON
+ * @returns {void}
+ */
 function renderGallery(bikesGallery) {
 	const container = document.querySelector(".gallery-grid");
 	const brands = ["Honda", "Suzuki", "Kawasaki", "Yamaha"];
