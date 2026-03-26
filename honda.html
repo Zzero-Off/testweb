@@ -1,47 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda | Legendární sportovní motorka</title>
+    <meta name="title" content="Honda | Legendární sportovní motorka" />
+    <meta name="description" content="Objevte Honda CBR – ikonický sportovní stroj s rychlostí a precizním designem, který si získal srdce jezdců po celém světě." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://japonskemotorky.cz/honda.html" />
+    <meta property="og:title" content="Honda | Legendární sportovní motorka" />
+    <meta property="og:description" content="Objevte Honda CBR – ikonický sportovní stroj s rychlostí a precizním designem, který si získal srdce jezdců po celém světě." />
+    <meta property="og:image" content="https://japonskemotorky.cz/pics/meta-tags-honda.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://japonskemotorky.cz/honda.html" />
+    <meta property="twitter:title" content="Honda | Legendární sportovní motorka" />
+    <meta property="twitter:description" content="Objevte Honda CBR – ikonický sportovní stroj s rychlostí a precizním designem, který si získal srdce jezdců po celém světě." />
+    <meta property="twitter:image" content="https://japonskemotorky.cz/pics/meta-tags-honda.png" />
+    <link rel="stylesheet" href="reset.css" type="text/css" />
     <link rel="stylesheet" href="style.css" type="text/css" />
-    
-    <title>Honda</title>
-</head>
-<body>
-       <header>
+  </head>
+  <body>
+    <header>
+      <div class="header-bar">
+        <div class="website-logo">
+          <a href="/index.html">
+            <img src="/pics/website-logo.png" alt="Website logo" width="100px" height="90px">
+          </a>
+        </div>
+        <div class="hamburger-menu">
+          <button popovertarget="my-popover">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu">
+              <path d="M4 5h16" />
+              <path d="M4 12h16" />
+              <path d="M4 19h16" />
+            </svg>
+          </button>
+          <div popover id="my-popover">
+            <div class="style-popover">
+              <a href="/honda.html">Honda</a>
+              <a href="/suzuki.html">Suzuki</a>
+              <a href="/kawasaki.html">Kawasaki</a>
+              <a href="/yamaha.html">Yamaha</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <h1>Svět japonských motorek: výkon na dosah</h1>
       <p>Precizní technika na dvou kolech</p>
       <br />
-      <hr />
-      <nav id="nav">
-        <a href="honda.html">Honda &#127949</a>
-        <a href="suzuki.html">Suzuki &#127949</a>
-        <a href="kawasaki.html">Kawasaki &#127949</a>
-        <a href="yamaha.html">Yamaha &#127949</a>
-      </nav>
-      <hr />
-      <br />
-    </header>
-    <div class="moto-card">
-    <img src="pics/honda.jpg" alt="Honda CBR 65O" width="600px" height="auto">
-    <div class="list-items">
-    <ul>
-      <li>CBR 650</li>
-      <li>řadový čtyřválec DOHC</li>
-      <li>70 kW při 12 000 ot./min, 93,9 koní</li>
-      <li>točivý moment 63 Nm při 9 500 ot./min</li>
-      <li>6 stupňová převodovka</li>
-    </ul>
-    </div>
-    </div>
-    <hr>
-    <footer>
-      <div class="icons">
-      <img src="pics/icons/youtube.png"/>
-      <img src="pics/icons/facebook.png"/>
-      <img src="pics/icons/instagram.png"/>
+      <div class="header-nav">
+        <nav id="main-nav">
+          <a href="/honda.html">Honda</a>
+          <a href="/suzuki.html">Suzuki</a>
+          <a href="/kawasaki.html">Kawasaki</a>
+          <a href="/yamaha.html">Yamaha</a>
+        </nav>
       </div>
-        <p>Made with &#10084 by Misha</p>
+    </header>
+    <main>
+      <div class="bike-card">
+        <img src="/pics/honda.jpg" alt="Honda CBR 65O" width="600px" height="auto">
+        <div class="list-items">
+          <ul>
+            <li>CBR 650</li>
+            <li>řadový čtyřválec DOHC</li>
+            <li>70 kW při 12 000 ot./min, 93,9 koní</li>
+            <li>točivý moment 63 Nm při 9 500 ot./min</li>
+            <li>6 stupňová převodovka</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-icons">
+        <img src="/pics/icons/youtube.png">
+        <img src="/pics/icons/facebook.png">
+        <img src="/pics/icons/instagram.png">
+      </div>
+      <p class="footer-credit"> Made with &#10084 by Misha </p>
     </footer>
-</body>
+  </body>
 </html>
